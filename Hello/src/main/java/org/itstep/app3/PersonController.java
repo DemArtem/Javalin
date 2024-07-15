@@ -52,12 +52,13 @@ public class PersonController {
     }
 
     @PostMapping("/update/{id}")
-    public String updatePerson(Model model, @PathVariable("id") Long id){
-        Person person = persons.stream()
+    public String updatePerson(Model model, @PathVariable("id") Long id, @ModelAttribute("person") Person person){
+        Person personOld = persons.stream()
                         .filter(p->p.getId().equals(id))
                         .findFirst()
                         .orElse(null);
-        persons.remove(person);
+        personOld.setName(person.getName());
+        personOld.setSurname(person.getSurname());
         model.addAttribute("persons", persons);
         return "/persons";
     }
