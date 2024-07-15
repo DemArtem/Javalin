@@ -20,7 +20,7 @@ public class PersonController {
     public List<Person> getAllPersons(){
         return persons;
     }
-
+/*
     @GetMapping("/{id}")
     public ResponseEntity<Person> getPerson(@PathVariable("id") Long id){
         Person person = persons.stream()
@@ -63,8 +63,8 @@ public class PersonController {
         persons.remove(person);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    */
 }
-
 
 
 /*

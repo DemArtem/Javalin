@@ -3,8 +3,8 @@ package org.itstep.app3;
 import org.itstep.app2.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +23,33 @@ public class PersonController {
     public String hello(Model model){
         model.addAttribute("message", "Привет из Freemarker");
         return "index";
+    }
+
+    @GetMapping({"/","","index"})
+    public String gelAllPersons(Model model){
+        model.addAttribute("persons", persons);
+        return "persons";
+    }
+
+    @PostMapping({"/",""})
+    public String createPerson(Model model, @ModelAttribute("person") Person person){
+        System.out.println("ok");
+        persons.add(person);
+        model.addAttribute("persons", persons);
+        return "/persons";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deletePerson(Model model, @PathVariable("id") Long id){
+        Person person =
+                persons.stream
+                                ()
+                        .filter(p->p.getId().equals(id))
+                        .findFirst()
+                        .orElse(null);
+        persons.remove(person);
+        model.addAttribute("persons", persons);
+        return "/persons";
     }
 }
 
