@@ -42,8 +42,18 @@ public class PersonController {
     @PostMapping("/delete/{id}")
     public String deletePerson(Model model, @PathVariable("id") Long id){
         Person person =
-                persons.stream
-                                ()
+                persons.stream()
+                        .filter(p->p.getId().equals(id))
+                        .findFirst()
+                        .orElse(null);
+        persons.remove(person);
+        model.addAttribute("persons", persons);
+        return "/persons";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updatePerson(Model model, @PathVariable("id") Long id){
+        Person person = persons.stream()
                         .filter(p->p.getId().equals(id))
                         .findFirst()
                         .orElse(null);
