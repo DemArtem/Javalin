@@ -11,6 +11,7 @@
     <modules>
         <module>Hello</module>
         <module>AplicationContext</module>
+        <module>Properties</module>
     </modules>
 
     <properties>
