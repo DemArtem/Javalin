@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>Hello</module>
+        <module>AplicationContext</module>
     </modules>
 
     <properties>
