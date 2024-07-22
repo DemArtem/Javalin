@@ -13,6 +13,7 @@
         <module>AplicationContext</module>
         <module>Properties</module>
         <module>AOP</module>
+        <module>Hibernate</module>
     </modules>
 
     <properties>
