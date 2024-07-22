@@ -1,4 +1,4 @@
-package org.itstep;
+package org.itstep.Sample1;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

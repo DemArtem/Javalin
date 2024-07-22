@@ -1,4 +1,4 @@
-package org.itstep;
+package org.itstep.Sample1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

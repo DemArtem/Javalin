@@ -1,4 +1,4 @@
-package org.itstep;
+package org.itstep.Sample1;
 
 import org.springframework.stereotype.Service;
 
