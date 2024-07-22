@@ -1,9 +1,8 @@
 package org.itstep;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.logging.ConsoleHandler;
@@ -29,5 +28,19 @@ public class LoggingAspect {
     public void logMethodCall(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         logger.log(Level.INFO, "название метода: " + methodName);
+    }
+
+    @Around("@annotation(LogExecutionTime)")
+    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object proceed = joinPoint.proceed();
+        long executionTime = System.currentTimeMillis() - start;
+        logger.log(Level.INFO, joinPoint.getSignature() + " выполнен за " + executionTime + " мс");
+        return proceed;
+    }
+
+    @AfterReturning(pointcut = "execution(public String org.itstep.FullNameComposer.*(..))", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        logger.log(Level.INFO, "возвращенное значение: " + result.toString());
     }
 }

@@ -11,6 +11,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Application implements CommandLineRunner {
     @Autowired
     FullName fullName;
+
+    @Autowired
+    SomeService someService;
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -18,5 +21,6 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         fullName.composeFullName("John","Doe");
+        someService.someMethods();
     }
 }

@@ -1,6 +1,5 @@
 package org.itstep;
 
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Service;
 
 @Service
