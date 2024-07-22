@@ -12,6 +12,7 @@
         <module>Hello</module>
         <module>AplicationContext</module>
         <module>Properties</module>
+        <module>AOP</module>
     </modules>
 
     <properties>
